@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TampilTugasPraktikum">
+
+    <TextView
+        android:id="@+id/Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:text="Data Mahasiswa"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tampil_nim"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nim: " />
+
+    <TextView
+        android:id="@+id/tampil_nama"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nama: " />
+
+    <TextView
+        android:id="@+id/tampil_kelas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kelas: " />
+
+    <TextView
+        android:id="@+id/tampil_ipk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="IPK: " />
+
+    <TextView
+        android:id="@+id/tampil_nilaimk1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:text="Nilai MK 1: " />
+
+    <TextView
+        android:id="@+id/tampil_nilaimk2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:text="Nilai MK 2: " />
+
+    <TextView
+        android:id="@+id/tampil_rata"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rata-Rata: " />
+    
+<!--    <Button-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:onClick="TugasPraktikum"-->
+<!--        android:text="Submit Data Mahasiswa" />-->
+</LinearLayout>

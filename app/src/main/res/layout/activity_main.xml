@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/button_explicit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="150dp"
+        android:onClick="HandleExplicit"
+        android:text="Explicit Intent"
+        tools:ignore="OnClick" />
+
+    <Button
+        android:id="@+id/button_implicit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="HandleImplictIntent"
+        android:text="implicit Intent" />
+
+    <Button
+        android:id="@+id/button_extra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="HandleintentExra"
+        android:text="Intent with Extra" />
+
+    <Button
+        android:id="@+id/button_tugas_praktikum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="TugasPraktikum"
+        android:text="Tugas Praktikum" />
+
+</LinearLayout>
