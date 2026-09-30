@@ -1,65 +1,103 @@
-/************************************************************
- * Ditulis oleh : Ferdilan Ramadhani
- * Kode ini ditulis dengan kesungguhan, diketik dengan harapan.
- ************************************************************/
+package com.example.intent1
 
-package com.example.intent1;
+import android.content.Intent
+import android.net.Uri
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+class MainActivity : ComponentActivity() {
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-public class MainActivity extends AppCompatActivity {
-
-//    Deklarasi Variabel
-    Button button_ex;
-    Button button_imp;
-    Button button_intetExtra;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-
-//        Pengenalan komponen
-        button_ex = findViewById(R.id.button_explicit);
-        button_imp = findViewById(R.id.button_implicit);
-        button_intetExtra = findViewById(R.id.button_extra);
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            MaterialTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    MainScreen(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding),
+                        onExplicitClick = {
+                            startActivity(Intent(this, ExplicitIntent::class.java))
+                        },
+                        onImplicitClick = {
+                            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com")))
+                        },
+                        onIntentExtraClick = {
+                            startActivity(Intent(this, IntentwithExtra::class.java))
+                        },
+                        onTugasPraktikumClick = {
+                            startActivity(Intent(this, TugasPraktikum::class.java))
+                        }
+                    )
+                }
+            }
+        }
     }
+}
 
-    public void HandleExplicit(View view) {
-        Intent explicit = new Intent(this, ExplicitIntent.class);
-        startActivity(explicit);
-    }
-
-    public void HandleImplictIntent(View view) {
-        Intent implicit = new Intent( Intent.ACTION_VIEW, Uri.parse("https://www.google.com"));
-        startActivity(implicit);
-    }
-
-    public void HandleintentExra(View view) {
-        Intent explicit = new Intent(this, IntentwithExtra.class);
-        startActivity(explicit);
-
-    }
-
-    public void TugasPraktikum(View view) {
-        Intent explicit = new Intent(this, TugasPraktikum.class);
-        startActivity(explicit);
+@Composable
+fun MainScreen(
+    modifier: Modifier = Modifier,
+    onExplicitClick: () -> Unit,
+    onImplicitClick: () -> Unit,
+    onIntentExtraClick: () -> Unit,
+    onTugasPraktikumClick: () -> Unit
+) {
+    Column(
+        modifier = modifier.padding(24.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = "Intent & Tasks Demonstration",
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.primary
+        )
+        Spacer(modifier = Modifier.height(32.dp))
+        Button(
+            onClick = onExplicitClick,
+            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+        ) {
+            Text("Explicit Intent")
+        }
+        Button(
+            onClick = onImplicitClick,
+            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+        ) {
+            Text("Implicit Intent (Google)")
+        }
+        Button(
+            onClick = onIntentExtraClick,
+            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+        ) {
+            Text("Intent with Extra")
+        }
+        Button(
+            onClick = onTugasPraktikumClick,
+            modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+        ) {
+            Text("Tugas Praktikum")
+        }
     }
 }
